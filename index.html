@@ -1,0 +1,39 @@
+<h1>WRHA emergency wait times</h1>
+
+<p>Data obtained from <a href="http://www.wrha.mb.ca/wait-times/">WRHA's site</a>. I'm polling the site at 5 minute intervals.</p>
+
+<p><a href="wrha_wait_times.csv">whra_wait_times.csv</a>.</p>
+
+
+<h2>Field list</h2>
+<ol>
+<li>Timestamp, in seconds since epoch, as reported on the WRHA's page (in CST)</li>
+<li>Facility name</li>
+<li>Number of patients waiting</li>
+<li>Average Wait</li>
+<li>Longest non-urgent wait</li>
+</ol>
+
+<p>You may see duplicate entries depending on when I poll vs when the site is updated. Use fields 1 and 2 for deduplication.</p>
+
+<h2>Terms</h2>
+<ul>
+<li>I am under no obligation to keep this data up to date.</li>
+<li>I don't own the data, nor did I create it. I'm just scraping it from the WRHA's online report.</li>
+<li>Please don't poll this CSV more than once an hour.</li>
+</ul>
+
+sean@ertw.com
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-66328-8']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
