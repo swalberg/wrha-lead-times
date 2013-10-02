@@ -7,7 +7,7 @@
 
 <h2>Field list</h2>
 <ol>
-<li>Timestamp, in seconds since epoch, as reported on the WRHA's page (in CST)</li>
+<li>Timestamp, in seconds since epoch, as reported on the WRHA's page (in GMT)</li>
 <li>Facility name</li>
 <li>Number of patients waiting</li>
 <li>Average Wait</li>
@@ -16,7 +16,9 @@
 
 <p>You may see duplicate entries depending on when I poll vs when the site is updated. Use fields 1 and 2 for deduplication.</p>
 
-<p><b>Currently looking into some issues with the timestamp and timezone</b></p>
+<ul>
+  <li>Oct 2: Fixed timestamps by adding 18000 to make them into GMT</li>
+</ul>
 
 <h2>Terms</h2>
 <ul>

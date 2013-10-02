@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'tzinfo'
 
 def to_minutes(string)
   (hr, min) = string.split(/\s?:\s?/)
@@ -8,8 +9,9 @@ end
 
 doc = Nokogiri::HTML(open('http://www.wrha.mb.ca/wait-times/'))
 
+tz = TZInfo::Timezone.get('America/Winnipeg')
 time = doc.css('td.DateTime').inner_text
-time = Time.parse(time)
+time = Time.parse("#{time} #{tz.current_period.abbreviation}")
 
 doc.css('tr td span.Facility').each do |hospital|
   row = hospital
