@@ -38,9 +38,12 @@ CSV.foreach("wrha_wait_times.csv") do |row|
   rrd.update row[0], row[2], row[3], row[4]
 end
 
-RRD.graph! "all_hospitals.png", :title => "Hospital Wait Times", :width => 800, :height => 250, :start => Time.now - 1.day do
+RRD.graph! "all_hospitals.png", :title => "Hospital Emergency Queue Length", :width => 800, :height => 250, :start => Time.now - 1.day do
   FILES.each_with_index do |data, i|
     for_rrd_data "people_waiting#{i}", :people_waiting => :average, :from => "rrds/#{data[1]}"
-    draw_line data: "people_waiting#{i}", color: "##{COLORS[i]}", :label => data[0], :width => 1
+    draw_line data: "people_waiting#{i}", color: "##{COLORS[i]}", label: "%-15s" % data[0], width: 1
+    new_line = (i > 0 && i % 3 == 0) ? "\\n" : ""
+    print_value "people_waiting#{i}:LAST", format: "%3.0lf%s#{new_line}"
   end
+  print_comment "Updated at #{DateTime.now.strftime('%H\:%M %b %d, %Y')} UTC"
 end
