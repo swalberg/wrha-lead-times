@@ -33,7 +33,9 @@ def rrd_for(hospital)
   rrd
 end
 
-CSV.foreach("wrha_wait_times.csv") do |row|
+system "tail -1000 wrha_wait_times.csv > tmp.csv"
+
+CSV.foreach("tmp.csv") do |row|
   rrd = rrd_for(row[1])
   rrd.update row[0], row[2], row[3], row[4]
 end
